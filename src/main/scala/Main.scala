@@ -21,7 +21,7 @@ object Main extends App {
       val pageRanges = pdf.toc
         .map({ bookmark => (bookmark.title, bookmark.pageNumber) })
         .sliding(2)
-        .map({ case Stream((title, start), (_, nextStart)) => (title, start, nextStart - 1) })
+        .map({ case Stream((title, start), (_, nextStart)) => (title, start, nextStart) })
         .filter({ case (title, _, _) => title.startsWith("file:") })
         .map({ case (title, start, stop) => (title.drop(5), start, stop) })
 
